@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/10/2022 02:12:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.co.castor.modelo.Cargos" optimistic-lock="version" schema="public" table="cargos">
+    <id name="idcargo" type="int">
+      <column name="idcargo"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="80" name="nombre" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="empleadoses" table="empleados">
+      <key>
+        <column name="cargo" not-null="true"/>
+      </key>
+      <one-to-many class="com.co.castor.modelo.Empleados"/>
+    </set>
+  </class>
+</hibernate-mapping>
